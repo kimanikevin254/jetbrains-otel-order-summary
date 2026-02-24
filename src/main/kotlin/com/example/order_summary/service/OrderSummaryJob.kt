@@ -4,6 +4,7 @@ import com.example.order_summary.entity.OrderSummary
 import com.example.order_summary.repository.OrderRepository
 import com.example.order_summary.repository.OrderSummaryRepository
 import org.slf4j.LoggerFactory
+import org.springframework.scheduling.annotation.Async
 import org.springframework.scheduling.annotation.Scheduled
 import org.springframework.stereotype.Service
 import java.math.BigDecimal
@@ -16,7 +17,8 @@ class OrderSummaryJob(
 ) {
     private val logger = LoggerFactory.getLogger(OrderSummaryJob::class.java)
 
-    @Scheduled(fixedDelay = 300000) // 5mins in ms
+    @Async
+    @Scheduled(fixedRate = 5000) // 5secs in ms
     fun generateSummary() {
         logger.info("Starting order summary job...")
 
