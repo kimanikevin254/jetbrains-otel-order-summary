@@ -16,7 +16,7 @@ class OrderSummaryJob(
 ) {
     private val logger = LoggerFactory.getLogger(OrderSummaryJob::class.java)
 
-    @Scheduled(fixedDelay = 1800000) // 30mins in ms
+    @Scheduled(fixedDelay = 300000) // 5mins in ms
     fun generateSummary() {
         logger.info("Starting order summary job...")
 
