@@ -49,3 +49,13 @@ allOpen {
 tasks.withType<Test> {
 	useJUnitPlatform()
 }
+
+tasks.bootRun {
+	jvmArgs = listOf(
+		"-javaagent:${projectDir}/agents/opentelemetry-javaagent.jar",
+		"-Dotel.service.name=order-summary-service",
+		"-Dotel.traces.exporter=logging",
+		"-Dotel.metrics.exporter=none",
+		"-Dotel.logs.exporter=none"
+	)
+}
